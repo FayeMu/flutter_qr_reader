@@ -5,10 +5,11 @@ homepage: https://github.com/Attiv/flutter_qr_reader
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
+  flutter: ">=1.10.0"
 
 dependencies:
   flutter:
-    sdk: flutter: ^1.10.0
+    sdk: flutter
   image_picker: ^0.6.0+9
 
 dev_dependencies:
