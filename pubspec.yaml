@@ -1,6 +1,6 @@
 name: flutter_qr_reader2
 description: QR code (scan QRCode and picture) recognition （AndroidView/UiKitView）
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/Attiv/flutter_qr_reader
 
 environment:
@@ -28,7 +28,7 @@ flutter:
   plugin:
     platforms:
       android:
-        androidPackage: me.hetian.flutter_qr_reader
+        package: me.hetian.flutter_qr_reader
         pluginClass: FlutterQrReaderPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
