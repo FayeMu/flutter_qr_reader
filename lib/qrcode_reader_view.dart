@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'flutter_qr_reader.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 
 /// 使用前需已经获取相关权限
@@ -14,6 +15,7 @@ class QrcodeReaderView extends StatefulWidget {
   final Color boxLineColor;
   final Widget helpWidget;
   final String tipString;
+  final Function isDeniedCallback;
   QrcodeReaderView({
     Key key,
     @required this.onScan,
@@ -22,6 +24,7 @@ class QrcodeReaderView extends StatefulWidget {
     this.helpWidget,
     this.scanBoxRatio = 0.85,
     this.tipString = "请将二维码置于方框中",
+    this.isDeniedCallback
   }) : super(key: key);
 
   @override
@@ -110,6 +113,11 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
   }
 
   Future _scanImage() async {
+    var status = await Permission.camera.status;
+    if (status.isDenied) {
+      widget.isDeniedCallback();
+      return;
+    }
     stopScan();
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (image == null) {

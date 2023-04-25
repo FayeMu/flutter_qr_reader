@@ -51,10 +51,11 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             FlatButton(
               onPressed: () async {
-                Map<PermissionGroup, PermissionStatus> permissions =
-                    await PermissionHandler().requestPermissions([PermissionGroup.camera]);
+                Map<Permission, PermissionStatus> permissions = await [
+                  Permission.camera
+                ].request();
                 print(permissions);
-                if (permissions[PermissionGroup.camera] == PermissionStatus.granted) {
+                if (permissions[Permission.camera] == PermissionStatus.granted) {
                   showDialog(
                     context: context,
                     builder: (context) {
