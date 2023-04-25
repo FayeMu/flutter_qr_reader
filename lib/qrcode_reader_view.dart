@@ -113,7 +113,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
   }
 
   Future _scanImage() async {
-    var status = await Permission.camera.status;
+    var status = await Permission.photos.status;
     if (status.isDenied) {
       widget.isDeniedCallback();
       return;
